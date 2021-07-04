@@ -15,19 +15,19 @@ class graph {
  private:
   int n;
   std::vector< std::vector< bool > > g;
-  std::vector< int > deg;
+  //std::vector< int > deg;
  public:
-  std::vector< int > V;
+  //std::vector< int > V;
   graph() {}
   graph( int n );
   graph( std::vector< std::vector< bool > > &_g );
 
   int size();
   bool is_edge( int x, int y );
-  void make_deg();
+  //void make_deg();
   std::vector< int > make_deg( std::vector< int > &Vs );
 
-  int getdeg(int i );
+  //int getdeg(int i );
 
   //Algorithm 7.1
   std::map< std::tuple<int, Vector> , std::vector<int> > getPartitions();
@@ -58,47 +58,35 @@ class graph {
   std::vector<int> Cert3v();
   std::vector<int> Cert4v();
 
-  void print();
-  void print_V();
-  void print_V_alphabet();
-  void print_G();
+  void print( std::vector< int > &Vs );
+  void print_V( std::vector<int> &Vs );
+  void print_V_alphabet( std::vector<int> &Vs );
+  void print_G( std::vector<int> &Vs );
 
 };
 
 graph::graph( int n ): n(n) {
- V = std::vector<int> ( n );
- iota( V.begin() , V.end() , 0 );
- make_deg();
+ //V = std::vector<int> ( n );
+ //iota( V.begin() , V.end() , 0 );
+ //make_deg();
 }
 
 graph::graph( std::vector< std::vector< bool > > &_g) : g(_g) {
  n = g.size();
- V = std::vector<int> ( n );
- iota( V.begin() , V.end() , 0 );
- make_deg();
+ //V = std::vector<int> ( n );
+ //iota( V.begin() , V.end() , 0 );
+ //make_deg();
 }
 
 int graph::size() { return n; }
 bool graph::is_edge( int x , int y ) { return g[x][y] ; }
-
-void graph::make_deg() {
- deg = std::vector< int > ( n , 0 );
- for(int i = 0 ; i < n ; i++ )
-  for(int j = 0 ; j < n ; j++ )
-   if( is_edge( i , j ) ) deg[i]++;
-}
 
 std::vector< int > graph::make_deg( std::vector< int > &Vs ) {
  std::vector< int > res( Vs.size() , 0  );
  for( int i = 0 ; i < Vs.size() ; i++ )
   for( int j = 0 ; j < Vs.size() ; j++ )
    if( is_edge( Vs[i] , Vs[j] ) ) res[i]++;
-
  return res;
 }
-
-
-int graph::getdeg(int i ) { return deg[i]; }
-
 
 #endif

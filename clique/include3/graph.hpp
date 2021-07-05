@@ -35,15 +35,22 @@ class graph {
 
   //Algorithm 7.5
   std::map<int, std::set< int > > REFINE( std::map<int, std::set< int > > &A );
+  std::map<int, std::set< int > > REFINE( std::map<int, std::set< int > > &A , std::vector< int > &Vs );
+
   void SpritAndUpdate( std::map<int, std::set< int > > &B , int j , 
     int &N , std::set< int > &U, std::map<int, std::set< int > > &S, std::set< int > &T);
+  void SpritAndUpdate( std::map<int, std::set< int > > &B , int j , 
+    int &N , std::set< int > &U, std::map<int, std::set< int > > &S, std::set< int > &T , std::vector< int > &Vs );
+  
   int AbsAndSet( int u , std::set< int > &T );// | T and N_g(u) |
+  int AbsAndSet( int u , std::set< int > &T , std::vector< int > &Vs );// | T and N_g(u) |
 
   //Algorithm 7.6
   CompResult Compare( std::vector< int > &mu , std::vector< int > &pi, int l ); 
 
   //Algorithm 7.7
   void Canon1( std::map< int , std::set<int> > &P, std::vector<int> &mu, bool &BestExist );
+  void Canon1( std::map< int , std::set<int> > &P, std::vector<int> &mu, bool &BestExist , std::vector< int > &Vs );
   //Algorithm 7.8
   std::string Cert1();
   //Algorithm 7.9

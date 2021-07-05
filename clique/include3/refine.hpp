@@ -11,7 +11,8 @@ std::map< int, std::set<int> > graph::REFINE( std::map< int , std::set<int> > &A
   S[ B.size() - 1 - it.first ] = it.second;
 
  std::set< int > U , T;
- for( auto v : V ) U.insert( v );
+ for( int v = 0 ; v < n ; v++ ) U.insert( v );
+ //for( auto v : Vs ) U.insert( v );
  int N = B.size();
  while( N != 0 ) {
   N--;
@@ -38,7 +39,7 @@ std::map< int, std::set<int> > graph::REFINE( std::map< int , std::set<int> > &A
   S[ B.size() - 1 - it.first ] = it.second;
 
  std::set< int > U , T;
- for( auto v : V ) U.insert( v );
+ for( auto v : Vs ) U.insert( v );
  int N = B.size();
  while( N != 0 ) {
   N--;

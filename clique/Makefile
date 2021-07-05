@@ -1,5 +1,5 @@
 CXX = g++
-CXXFLAGS =  -O3 -std=c++17 -Iinclude/ 
+CXXFLAGS =  -O3 -std=c++17 -Iinclude3/ 
 DEBUGFLAGS = -Wall -O3 -std=c++17 -Iinclude/ 
 TARGETDIR = bin
 

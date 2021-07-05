@@ -103,6 +103,36 @@ void graph::Canon1( std::map<int , std::set< int > > &P , std::vector<int> &mu ,
  }
 }
 
+std::string graph::Cert1(std::vector< int > &Vs) {
+ std::map<int , std::set<int> > P;
+ //std::vector<int> mu( n );
+ std::vector<int> mu = Vs;
+ //iota( mu.begin() , mu.end() , 0 );
+ //for(int i = 0 ; i < n ; i++ )
+ for( int i : Vs )
+ {
+  P[0].insert( i );
+ }
+ bool BestExist = false;
+ Canon1( P , mu , BestExist , Vs);
+ //unsigned long long int num = 0;
+ std::string s = "";
+ //for(int i = 1 ; i < n ; i++ )
+ for(int i = 1 ; i < Vs.size() ; i++ )
+  for(int j = 0 ; j < i ; j++ )
+  {
+   //num <<= 1;
+   if( is_edge( mu[i] , mu[j] ) ){
+    s += "1";
+    //num++;
+   }else{
+    s += "0";
+   }
+  }
+ return s;
+}
+
+
 std::string graph::Cert1() {
  std::map<int , std::set<int> > P;
  std::vector<int> mu( n );
@@ -128,6 +158,37 @@ std::string graph::Cert1() {
  return s;
 }
 
+std::string graph::Cert3(std::vector<int> &Vs) {
+ std::map<int , std::set<int> > P;
+ //std::vector<int> mu( n );
+ //iota( mu.begin() , mu.end() , 0 );
+ std::vector<int> mu = Vs;
+ std::map< std::tuple<int,Vector> , std::vector<int> > X = getPartitions(Vs);
+ int index = 0;
+ for( auto it : X ) {
+  for( auto v : it.second ) P[ index ].insert( v );
+  index++;
+ }
+ bool BestExist = false;
+ Canon1( P , mu , BestExist , Vs );
+ //unsigned long long int num = 0;
+ std::string s = "";
+ //for(int i = 1 ; i < n ; i++ )
+ for(int i = 1 ; i < Vs.size() ; i++ )
+  for(int j = 0 ; j < i ; j++ )
+  {
+   //num <<= 1;
+   if( is_edge( mu[i] , mu[j] ) ){
+    s += "1";
+    //num++;
+   }else{
+    s += "0";
+   }
+  }
+ return s;
+}
+
+
 std::string graph::Cert3() {
  std::map<int , std::set<int> > P;
  std::vector<int> mu( n );
@@ -138,7 +199,6 @@ std::string graph::Cert3() {
   for( auto v : it.second ) P[ index ].insert( v );
   index++;
  }
-
  bool BestExist = false;
  Canon1( P , mu , BestExist );
  //unsigned long long int num = 0;

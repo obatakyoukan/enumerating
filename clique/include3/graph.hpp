@@ -53,16 +53,20 @@ class graph {
   void Canon1( std::map< int , std::set<int> > &P, std::vector<int> &mu, bool &BestExist , std::vector< int > &Vs );
   //Algorithm 7.8
   std::string Cert1();
+  std::string Cert1(std::vector<int> &Vs);
   //Algorithm 7.9
   void Canon2( permutation &beta, std::vector< std::set< permutation > > &G, std::map< int , std::set<int> > &P, std::vector<int> &mu , bool &BestExist );
   //Algorithm 7.10
   std::string Cert2();
   std::string Cert3();
+  std::string Cert3(std::vector<int> &Vs);
   std::string Cert4();
 
   std::vector<int> Cert1v();
+  std::vector<int> Cert1v(std::vector<int> &Vs);
   std::vector<int> Cert2v();
   std::vector<int> Cert3v();
+  std::vector<int> Cert3v(std::vector<int> &Vs);
   std::vector<int> Cert4v();
 
   void print( std::vector< int > &Vs );

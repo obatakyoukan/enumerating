@@ -56,6 +56,7 @@ class graph {
   std::string Cert1(std::vector<int> &Vs);
   //Algorithm 7.9
   void Canon2( permutation &beta, std::vector< std::set< permutation > > &G, std::map< int , std::set<int> > &P, std::vector<int> &mu , bool &BestExist );
+  void Canon2( permutation &beta, std::vector< std::set< permutation > > &G, std::map< int , std::set<int> > &P, std::vector<int> &mu , bool &BestExist , std::vector< int > &Vs );
   //Algorithm 7.10
   std::string Cert2();
   std::string Cert3();

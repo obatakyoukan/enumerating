@@ -53,7 +53,8 @@ void graph::Canon1( std::map<int , std::set< int > > &P , std::vector<int> &mu ,
    Rl1.erase( u );
    R[l] = Rl;
    R[l+1] = Rl1;
-   Canon1( R , mu , BestExist );
+   //Canon1( R , mu , BestExist );
+   Canon1( R , mu , BestExist , Vs );
   }
  }
 }
@@ -164,11 +165,13 @@ std::string graph::Cert3(std::vector<int> &Vs) {
  //iota( mu.begin() , mu.end() , 0 );
  std::vector<int> mu = Vs;
  std::map< std::tuple<int,Vector> , std::vector<int> > X = getPartitions(Vs);
+ 
  int index = 0;
  for( auto it : X ) {
   for( auto v : it.second ) P[ index ].insert( v );
   index++;
  }
+
  bool BestExist = false;
  Canon1( P , mu , BestExist , Vs );
  //unsigned long long int num = 0;

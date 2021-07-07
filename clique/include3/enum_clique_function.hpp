@@ -3,7 +3,10 @@
 #include "enum_clique.hpp"
 
 void CliqueSolve::enumeration() {
- std::vector<int> Vs = V;
+ //std::vector<int> Vs = V;
+ std::vector<int> Vs( size() );
+ iota( Vs.begin() , Vs.end() , 0 );
+
  node_num = 0;
  std::cout<<"Start enumrating"<<std::endl;
  expand( Vs , &t.root );
@@ -27,6 +30,8 @@ void CliqueSolve::expand( std::vector<int>& Vs , node* a ){
 
   std::string cert = "";
   if( Vsp.size() != 0 ){
+
+   //グラフのcert化
    int N_Vsp = Vsp.size();
    std::vector< std::vector<bool> > g_vsp( N_Vsp , std::vector<bool>( N_Vsp , false ) );
    for( int j = 0 ; j < N_Vsp ; j++ )
@@ -34,6 +39,7 @@ void CliqueSolve::expand( std::vector<int>& Vs , node* a ){
      g_vsp[j][k] = is_edge( Vsp[j] , Vsp[k] );
    graph G( g_vsp );
    cert = G.Cert4();
+  
   } else {
    cert = "empty set"; // サイズ1のときも空文字なので，分けるため.
   }

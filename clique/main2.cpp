@@ -1,6 +1,6 @@
 #include "graph.hpp"
 #include "cert1.hpp"
-//#include "cert2.hpp"
+#include "cert2.hpp"
 
 int main(){
  int n,m;
@@ -13,16 +13,19 @@ int main(){
  }
  graph g( E );
  std::vector< int > Vs(n/2);
- iota( Vs.begin() , Vs.end() , 0 );
 
  std::cout<<g.Cert1()<<std::endl;
- std::cout<<g.Cert1(Vs)<<std::endl;
  iota( Vs.begin() , Vs.end() , 0 );
- //std::cout<<g.Cert2()<<std::endl;
+ std::cout<<g.Cert1(Vs)<<std::endl;
+ std::cout<<g.Cert2()<<std::endl;
+ iota( Vs.begin() , Vs.end() , 0 );
+ std::cout<<g.Cert2(Vs)<<std::endl;
  std::cout<<g.Cert3()<<std::endl;
  iota( Vs.begin() , Vs.end() , 0 );
  std::cout<<g.Cert3(Vs)<<std::endl;
- //std::cout<<g.Cert4()<<std::endl;
+ std::cout<<g.Cert4()<<std::endl;
+ iota( Vs.begin() , Vs.end() , 0 );
+ std::cout<<g.Cert4(Vs)<<std::endl;
 
  return 0;
 }

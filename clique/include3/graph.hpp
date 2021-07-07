@@ -32,21 +32,27 @@ class graph {
   //Algorithm 7.1
   std::map< std::tuple<int, Vector> , std::vector<int> > getPartitions();
   std::map< std::tuple<int, Vector> , std::vector<int> > getPartitions(std::vector< int > &Vs);
+  std::map< std::tuple<int, Vector> , std::vector<int> > getPartitions2(std::vector< int > &Vs);
 
   //Algorithm 7.5
   std::map<int, std::set< int > > REFINE( std::map<int, std::set< int > > &A );
   std::map<int, std::set< int > > REFINE( std::map<int, std::set< int > > &A , std::vector< int > &Vs );
+  std::map<int, std::set< int > > REFINE2( std::map<int, std::set< int > > &A , std::vector< int > &Vs );
 
   void SpritAndUpdate( std::map<int, std::set< int > > &B , int j , 
     int &N , std::set< int > &U, std::map<int, std::set< int > > &S, std::set< int > &T);
   void SpritAndUpdate( std::map<int, std::set< int > > &B , int j , 
     int &N , std::set< int > &U, std::map<int, std::set< int > > &S, std::set< int > &T , std::vector< int > &Vs );
+  void SpritAndUpdate2( std::map<int, std::set< int > > &B , int j , 
+    int &N , std::set< int > &U, std::map<int, std::set< int > > &S, std::set< int > &T , std::vector< int > &Vs );
   
   int AbsAndSet( int u , std::set< int > &T );// | T and N_g(u) |
   int AbsAndSet( int u , std::set< int > &T , std::vector< int > &Vs );// | T and N_g(u) |
+  int AbsAndSet2( int u , std::set< int > &T , std::vector< int > &Vs );// | T and N_g(u) |
 
   //Algorithm 7.6
   CompResult Compare( std::vector< int > &mu , std::vector< int > &pi, int l ); 
+  CompResult Compare2( std::vector< int > &mu , std::vector< int > &pi, int l , std::vector< int > &Vs ); 
 
   //Algorithm 7.7
   void Canon1( std::map< int , std::set<int> > &P, std::vector<int> &mu, bool &BestExist );
@@ -59,9 +65,11 @@ class graph {
   void Canon2( permutation &beta, std::vector< std::set< permutation > > &G, std::map< int , std::set<int> > &P, std::vector<int> &mu , bool &BestExist , std::vector< int > &Vs );
   //Algorithm 7.10
   std::string Cert2();
+  std::string Cert2(std::vector<int> &Vs);
   std::string Cert3();
   std::string Cert3(std::vector<int> &Vs);
   std::string Cert4();
+  std::string Cert4(std::vector<int> &Vs);
 
   std::vector<int> Cert1v();
   std::vector<int> Cert1v(std::vector<int> &Vs);

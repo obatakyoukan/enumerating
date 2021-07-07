@@ -21,6 +21,24 @@ std::map< std::tuple<int,Vector> , std::vector<int> > graph::getPartitions(std::
  return res;
 }
 
+std::map< std::tuple<int,Vector> , std::vector<int> > graph::getPartitions2(std::vector< int > &Vs) {
+ std::map< std::tuple<int, Vector > , std::vector<int> > res;
+ 
+ std::vector< int > deg = make_deg( Vs );
+ for(int i = 0 ; i < Vs.size() ; i++ ) {
+  int d1 = deg[i];
+  std::vector< int > d2( Vs.size() , 0 );
+  for( int j = 0 ; j < Vs.size() ;  j ++ ) {
+   if( is_edge( Vs[i], Vs[j] ) ) d2[ deg[j] ]++;
+  }
+  Vector d2v( d2 );
+  
+  //res[ std::tie( d1 , d2v ) ].push_back( Vs[i] );
+  res[ std::tie( d1 , d2v ) ].push_back( i );
+ }
+ return res;
+}
+
 
 std::map< std::tuple<int,Vector> , std::vector<int> > graph::getPartitions() {
  std::vector< int > Vs( size() );

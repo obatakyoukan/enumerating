@@ -57,8 +57,13 @@ std::string graph::Cert4(std::vector< int > &Vs) {
  iota( mu.begin() , mu.end() , 0 );
  std::map< std::tuple<int,Vector> , std::vector<int> > X = getPartitions2(Vs);
  int index = 0;
+ //std::cerr << "P" <<std::endl;
  for( auto it : X ) {
-  for( auto v : it.second ) P[ index ].insert( v );
+  for( auto v : it.second ) {
+   P[ index ].insert( v );
+   //std::cerr << v << " ";
+  }
+  //std::cerr << std::endl;
   index++;
  }
  
@@ -69,7 +74,7 @@ std::string graph::Cert4(std::vector< int > &Vs) {
  permutation I( Ip );
  //std::vector< std::set< permutation > > G(n);
  std::vector< std::set< permutation > > G(Vs.size());
- for( int i = 0 ; i < Vs.size() ; i++ ) G[i].insert( I );
+for( int i = 0 ; i < Vs.size() ; i++ ) G[i].insert( I );
  Canon2( I , G , P , mu , BestExist , Vs );
  //unsigned long long int num = 0;
  std::string s = "";

@@ -1,6 +1,6 @@
 #include "enum_clique.hpp"
 #include "enum_clique_function.hpp"
-
+#include <time.h>
 int main(){
  int n,m;
  std::cin>>n>>m;
@@ -11,14 +11,10 @@ int main(){
   E[u][v] = E[v][u] = true;
  }
  CliqueSolve g( E );
- /*
- std::cout<<g.Cert1()<<std::endl;
- std::cout<<g.Cert2()<<std::endl;
- std::cout<<g.Cert3()<<std::endl;
- std::cout<<g.Cert4()<<std::endl;
- */
- g.enumeration();
-
+ clock_t start = clock();
+ g.enumeration2();
+ clock_t end = clock();
+ std::cerr <<  "Time : " << (double)( end - start ) / CLOCKS_PER_SEC << " sec.\n";
  return 0;
 }
 

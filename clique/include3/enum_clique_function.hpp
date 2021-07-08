@@ -194,8 +194,8 @@ void CliqueSolve::expand3( std::vector<int>& Vs , node* a ){
   std::string cert = "";
   if( Vsp.size() != 0 ){
    std::vector< std::vector< int > > Vspa = disjoint_graph( Vsp );
-   if( Vspa.size() >= 2 ) std::cerr<< "Vspa size : "<< Vspa.size() << std::endl;
-   for( std::vector< int > &Vspp : Vspa ){
+   //if( Vspa.size() >= 2 ) std::cerr<< "Vspa size : "<< Vspa.size() << std::endl;
+   for( std::vector< int > Vspp : Vspa ){
     //グラフのcert化
     /*
        int N_Vsp = Vsp.size();
@@ -206,7 +206,6 @@ void CliqueSolve::expand3( std::vector<int>& Vs , node* a ){
        graph G( g_vsp );
        std::string cert2 = G.Cert3();
        */
-    //cert = Cert3( Vsp );
     cert = Cert3( Vspp );
     
     //std::cerr << cert << std::endl;
@@ -223,10 +222,8 @@ void CliqueSolve::expand3( std::vector<int>& Vs , node* a ){
      chache[ cert ] = next;
      //木の下に構成
      (*a).push( next , p );//同じpのとき１つのものと思えば，この木の表現のdfsを修正すればそのまま使えるかも
-     if( Vspp.size() != 0 ){
-      //std::cerr<<"Go to Child"<<std::endl;
+     if( Vspp.size() != 0 )
       expand3( Vspp , next );
-     }
     }
    }
   } else {

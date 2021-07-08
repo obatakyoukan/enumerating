@@ -35,6 +35,13 @@ struct tree{
  node root;
  tree(){}
  void dfs(node& a);
+ //void sum(node& a);
+ // add node element count( for memo value )
+ // same path value is same group
+ // ex ) have children a , b , c  
+ // And	a , b same group 
+ // sum = a * b + c 
+ 
 };
 
 #endif

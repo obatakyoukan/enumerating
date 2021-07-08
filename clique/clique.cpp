@@ -12,7 +12,7 @@ int main(){
  }
  CliqueSolve g( E );
  clock_t start = clock();
- g.enumeration2();
+ g.enumeration3();
  clock_t end = clock();
  std::cerr <<  "Time : " << (double)( end - start ) / CLOCKS_PER_SEC << " sec.\n";
  return 0;

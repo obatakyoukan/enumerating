@@ -29,6 +29,8 @@ class CliqueSolve : public graph {
   void enumeration();
   void expand2(std::vector<int>& Vs , node* a);
   void enumeration2();
+  void expand3(std::vector<int>& Vs , node* a);
+  void enumeration3();
   void expand_bf(std::vector<int>& Vs , node* a);
   void enumeration_bf();
 

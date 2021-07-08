@@ -57,15 +57,18 @@ std::string graph::Cert4(std::vector< int > &Vs) {
  iota( mu.begin() , mu.end() , 0 );
  std::map< std::tuple<int,Vector> , std::vector<int> > X = getPartitions2(Vs);
  int index = 0;
+ 
  //std::cerr << "P" <<std::endl;
  for( auto it : X ) {
+  //std::cerr<<"{";
   for( auto v : it.second ) {
    P[ index ].insert( v );
    //std::cerr << v << " ";
   }
-  //std::cerr << std::endl;
+  //std::cerr << "}";
   index++;
  }
+ //std::cerr << std::endl;
  
  bool BestExist = false;
  //std::vector< int > Ip(n);
@@ -131,8 +134,6 @@ void graph::Canon2( permutation &beta, std::vector< std::set<permutation> > &G ,
    mu = pi;
    //std::cout<<"Better"<<std::endl;
   }else if( Res == CompResult::Equal ){
-   //??????????????　ここは，よく考える必要があるかも ????? //
-   // indexを利用している部分があるので，余分にスペースを取らないといけないかも ? 
    std::vector< int > pi2tmp( Vs.size() );
    //std::vector< int > pi2tmp( n );
    //for(int i = 0 ; i < n ; i++ ) pi2tmp[ pi[i] ] = mu[i];

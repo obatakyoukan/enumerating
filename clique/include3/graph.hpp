@@ -27,7 +27,8 @@ class graph {
   //void make_deg();
   std::vector< int > make_deg( std::vector< int > &Vs );
 
-  //int getdeg(int i );
+  //連続でないところの分離
+  std::vector< std::vector< int > > disjoint_graph( std::vector< int > &Vs );
 
   //Algorithm 7.1
   std::map< std::tuple<int, Vector> , std::vector<int> > getPartitions();

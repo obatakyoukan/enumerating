@@ -60,4 +60,38 @@ CompResult graph::Compare( std::vector< int > &mu , std::vector< int > &pi, int 
  return CompResult::Equal;
 }
 
+#include <cassert>
+#include <queue>
+std::vector< std::vector< int > > graph::disjoint_graph( std::vector< int > &Vs ){
+ std::vector< std::vector< int > > res;
+ std::vector< bool > use( Vs.size() , false );
+
+ for( int i = 0 ; i < Vs.size() ; i++ ){
+  if( use[ i ] ) continue;
+  std::vector< int > tmp;
+  std::queue< int > que;
+  que.push( i );
+  use[i] = true;
+  while( !que.empty() ){
+   int now = que.front();
+   que.pop();
+   tmp.push_back( now );
+   for( int j = 0 ; j < Vs.size() ; j++ ){
+    if( is_edge( Vs[now] , Vs[j] ) and !use[ j ] ){
+     que.push( j );
+     use[ j ] = true;
+    }
+   }
+  }
+  res.push_back( tmp );
+ }
+
+ int sum = 0;
+ for( int i = 0 ; i < res.size(); i++ ) sum += res[i].size();
+ assert( sum == Vs.size() );
+
+ return res;
+}
+
+
 #endif

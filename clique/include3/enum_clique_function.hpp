@@ -8,13 +8,20 @@ void CliqueSolve::enumeration() {
  iota( Vs.begin() , Vs.end() , 0 );
 
  node_num = 0;
- std::cout<<"Start enumrating"<<std::endl;
+ //std::cout<<"Start enumrating"<<std::endl;
  expand( Vs , &t.root );
- std::cout<<"End enumrating"<<std::endl;
+ //std::cout<<"End enumrating"<<std::endl;
  std::cerr << "Num of Nodes : " << node_num << std::endl;
- t.dfs( t.root );
- std::cout<<std::endl;
+ //t.dfs( t.root );
+ //std::cout<<std::endl;
  std::cerr <<"Sum : " << t.sum( t.root ) << std::endl;
+
+ /*
+ for( auto s : chache ){
+  std::cout<< s.first << std::endl;
+ }
+ */
+
 }
 
 void CliqueSolve::expand( std::vector<int>& Vs , node* a ){
@@ -58,6 +65,12 @@ void CliqueSolve::expand( std::vector<int>& Vs , node* a ){
    node_num++;
    if( node_num % 100 == 0 )  std::cerr<<"Node : "<< node_num << std::endl;
    chache[ cert ] = next;
+   
+     std::cout<<"Vsp :";
+     for( auto v : Vsp ) std::cout<<" "<<v;
+     std::cout<<std::endl;
+     std::cout<<cert<<std::endl;
+
    //木の下に構成
    (*a).push( next , p );
    if( Vsp.size() != 0 ) expand( Vsp , next );
@@ -155,13 +168,19 @@ void CliqueSolve::enumeration3() {
  iota( Vs.begin() , Vs.end() , 0 );
 
  node_num = 0;
- std::cout<<"Start enumrating"<<std::endl;
+ //std::cout<<"Start enumrating"<<std::endl;
  expand3( Vs , &t.root );
- std::cout<<"End enumrating"<<std::endl;
+ //std::cout<<"End enumrating"<<std::endl;
  std::cerr << "Num of Nodes : " << node_num << std::endl;
- t.dfs( t.root );
- std::cout<<std::endl;
+ //t.dfs( t.root );
+ //std::cout<<std::endl;
  std::cerr <<"Sum : " << t.sum( t.root ) << std::endl;
+
+ /*
+ for( auto s : chache ){
+  std::cout<< s.first << std::endl;
+ }
+ */
 }
 
 void CliqueSolve::expand3( std::vector<int>& Vs , node* a ){
@@ -199,7 +218,7 @@ void CliqueSolve::expand3( std::vector<int>& Vs , node* a ){
    std::vector< std::vector< int > > Vspa = disjoint_graph( Vsp );
    
    /*
-   if( Vspa.size() >= 2  ) {
+   if( Vspa.size() >= 2  and Vsp.size() > 3 ) {
     std::cerr<< "Vsp :";
     for( int v : Vsp ) std::cerr << " " << v ;
     std::cerr<<std::endl;
@@ -212,7 +231,7 @@ void CliqueSolve::expand3( std::vector<int>& Vs , node* a ){
    }
    */
 
-   for( std::vector< int > Vspp : Vspa ){
+   for( std::vector< int >& Vspp : Vspa ){
     //グラフのcert化
     
     /*
@@ -238,6 +257,14 @@ void CliqueSolve::expand3( std::vector<int>& Vs , node* a ){
      node_num++;
      if( node_num % 100 == 0 )  std::cerr<<"Node : "<< node_num << std::endl;
      chache[ cert ] = next;
+
+     std::cout<<"Vspp :";
+     for( auto v : Vspp ) std::cout<<" "<<v;
+     std::cout<<std::endl;
+     std::cout<<cert<<std::endl;
+
+     if( Vspa.size() != 1 ) std::cerr<< "Certificate : "<< cert << std::endl;
+     
      //木の下に構成
      (*a).push( next , p );//同じpのとき１つのものと思えば，この木の表現のdfsを修正すればそのまま使えるかも
      if( Vspp.size() != 0 )

@@ -62,6 +62,7 @@ CompResult graph::Compare( std::vector< int > &mu , std::vector< int > &pi, int 
 
 #include <cassert>
 #include <queue>
+#include <algorithm>
 std::vector< std::vector< int > > graph::disjoint_graph( std::vector< int > &Vs ){
  std::vector< std::vector< int > > res;
  std::vector< bool > use( Vs.size() , false );
@@ -84,12 +85,13 @@ std::vector< std::vector< int > > graph::disjoint_graph( std::vector< int > &Vs 
     }
    }
   }
+  sort( tmp.begin() , tmp.end() );
   res.push_back( tmp );
  }
 
- int sum = 0;
- for( int i = 0 ; i < res.size(); i++ ) sum += res[i].size();
- assert( sum == Vs.size() );
+ //int sum = 0;
+ //for( int i = 0 ; i < res.size(); i++ ) sum += res[i].size();
+ //assert( sum == Vs.size() );
 
  return res;
 }

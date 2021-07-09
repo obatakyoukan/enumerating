@@ -14,6 +14,7 @@ void CliqueSolve::enumeration() {
  std::cerr << "Num of Nodes : " << node_num << std::endl;
  t.dfs( t.root );
  std::cout<<std::endl;
+ std::cerr <<"Sum : " << t.sum( t.root ) << std::endl;
 }
 
 void CliqueSolve::expand( std::vector<int>& Vs , node* a ){
@@ -76,6 +77,7 @@ void CliqueSolve::enumeration2() {
  std::cerr << "Num of Nodes : " << node_num << std::endl;
  t.dfs( t.root );
  std::cout<<std::endl;
+ std::cerr <<"Sum : " << t.sum( t.root ) << std::endl;
 }
 
 void CliqueSolve::expand2( std::vector<int>& Vs , node* a ){
@@ -159,6 +161,7 @@ void CliqueSolve::enumeration3() {
  std::cerr << "Num of Nodes : " << node_num << std::endl;
  t.dfs( t.root );
  std::cout<<std::endl;
+ std::cerr <<"Sum : " << t.sum( t.root ) << std::endl;
 }
 
 void CliqueSolve::expand3( std::vector<int>& Vs , node* a ){
@@ -194,18 +197,33 @@ void CliqueSolve::expand3( std::vector<int>& Vs , node* a ){
   std::string cert = "";
   if( Vsp.size() != 0 ){
    std::vector< std::vector< int > > Vspa = disjoint_graph( Vsp );
-   //if( Vspa.size() >= 2 ) std::cerr<< "Vspa size : "<< Vspa.size() << std::endl;
+   
+   /*
+   if( Vspa.size() >= 2  ) {
+    std::cerr<< "Vsp :";
+    for( int v : Vsp ) std::cerr << " " << v ;
+    std::cerr<<std::endl;
+    std::cerr<< "Vspa size : "<< Vspa.size() << std::endl;
+    for( std::vector< int > Vspp : Vspa ){
+     std::cerr<< "Vspp :";
+     for( int v : Vspp ) std::cerr << " " << v;
+     std::cerr<<std::endl;
+    }
+   }
+   */
+
    for( std::vector< int > Vspp : Vspa ){
     //グラフのcert化
+    
     /*
-       int N_Vsp = Vsp.size();
+       int N_Vsp = Vspp.size();
        std::vector< std::vector<bool> > g_vsp( N_Vsp , std::vector<bool>( N_Vsp , false ) );
        for( int j = 0 ; j < N_Vsp ; j++ )
        for( int k = 0 ; k < N_Vsp ; k++ )
-       g_vsp[j][k] = is_edge( Vsp[j] , Vsp[k] );
+       g_vsp[j][k] = is_edge( Vspp[j] , Vspp[k] );
        graph G( g_vsp );
-       std::string cert2 = G.Cert3();
-       */
+       cert = G.Cert3();
+     */
     cert = Cert3( Vspp );
     
     //std::cerr << cert << std::endl;

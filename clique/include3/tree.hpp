@@ -3,7 +3,8 @@
 #include <vector>
 
 struct node {
- //int val;
+ int val;
+
  //????????????????????????????????????????????????????????????????????
  //頂点修復用に最初は，どんな配列で，行ったのかを持つ必要があり，次のDFSからは，親の頂点情報と自分の現在の頂点とを合わせて情報を復元できそう
  //std::vector< int > V; 
@@ -13,7 +14,9 @@ struct node {
  std::vector< int > path; // children[i]へは，path[i]を追加したことど同じ
 
 
- node(){}
+ node(){
+  val = -1;
+ }
  //node(int val):val(val){}
 
  int size() { return children.size() ; }
@@ -35,12 +38,14 @@ struct tree{
  node root;
  tree(){}
  void dfs(node& a);
- //void sum(node& a);
+ int sum(node& a);
  // add node element count( for memo value )
  // same path value is same group
  // ex ) have children a , b , c  
  // And	a , b same group 
- // sum = a * b + c 
+ // sum = a * b + c + 1
+ // もしくは，sum = a + b + c + | children | かも?
+ // もしくは，sum = a + b + c + 1 - ( 2 - 1 ) かも?
  
 };
 

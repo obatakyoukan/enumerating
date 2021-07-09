@@ -1,5 +1,6 @@
 #include "enum_clique.hpp"
 #include "enum_clique_function.hpp"
+#include "enum_clique_brute_force.hpp"
 #include <time.h>
 int main(){
  int n,m;

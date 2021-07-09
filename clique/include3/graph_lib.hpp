@@ -75,7 +75,8 @@ std::vector< std::vector< int > > graph::disjoint_graph( std::vector< int > &Vs 
   while( !que.empty() ){
    int now = que.front();
    que.pop();
-   tmp.push_back( now );
+   tmp.push_back( Vs[now] );
+   //tmp.push_back( now );
    for( int j = 0 ; j < Vs.size() ; j++ ){
     if( is_edge( Vs[now] , Vs[j] ) and !use[ j ] ){
      que.push( j );

@@ -24,6 +24,7 @@ class CliqueSolve : public graph {
   tree t;
   std::map< std::string ,  node* > chache;
   int node_num;
+  int branches;
 
   void expand(std::vector<int>& Vs , node* a);
   void enumeration();
